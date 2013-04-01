@@ -1,0 +1,12 @@
+---
+title: Tags
+---
+
+{{range $tag, $pages := .site.tags}}
+  <h2 id="#tag-{{$tag}}">{{$tag}}</h2>
+  <ul>
+    {{range $pages}}
+      <li><a href="{{.url}}">{{.title}}</a></li>
+    {{end}}
+  </ul>
+{{end}}

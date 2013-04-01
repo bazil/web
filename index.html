@@ -1,0 +1,24 @@
+---
+title: Bazillion bytes
+---
+
+<ul class="posts">
+  {{range .site.posts}}
+    <div class="row-fluid">
+      <div class="span12">
+	<h2>{{.title}}</h2>
+      	<p>
+	  {{.content}}
+	</p>
+      	<p>
+	  posted on
+	  <a href="{{.url}}">{{.date.Format "2006-01-02"}}</a>,
+	  tagged as
+	  {{range .tags}}
+	    <a href="tags/#tag-{{.}}">{{.}}</a>
+	  {{end}}
+	</p>
+      </div>
+    </div>
+  {{end}}
+</ul>
