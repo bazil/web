@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+. "$(git --exec-path)/git-sh-setup"
+cd_to_toplevel
+
+export GIT_INDEX_FILE="$GIT_DIR/index.github-pages"
+
+rm -f -- "$GIT_INDEX_FILE"
+
+jkl .
+
+# jkl puts this script in _site also, doesn't support any kind of
+# exclude mechanism right now.
+rm -f _site/update
+
+find _site/ -type f -print0 \
+| git update-index --add --replace -z --stdin
+
+TREE="$(git write-tree --prefix=_site/)"
+
+COMMIT="$(git commit-tree "$TREE" <<EOF
+Regenerated site.
+EOF
+)"
+git push https://github.com/bazillion/bazillion.github.com +"$COMMIT":refs/heads/master
