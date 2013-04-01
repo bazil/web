@@ -14,6 +14,9 @@ jkl .
 # exclude mechanism right now.
 rm -f _site/update
 
+# static content, please don't run jekyll
+touch _site/.nojekyll
+
 find _site/ -type f -print0 \
 | git update-index --add --replace -z --stdin
 
