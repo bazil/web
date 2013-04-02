@@ -39,8 +39,15 @@
 	  <a class="brand" href="#">{{.site.name}}</a>
 	  <div class="nav-collapse collapse">
 	    <ul class="nav">
-	      <li class="active"><a href="/">Home</a></li>
-	     </ul>
+	      {{with "index"}}
+	        <li class="{{if eq $.page.id .}}active{{end}}"><a href="/">Home</a></li>
+	      {{end}}
+	      {{range $nav := .site.nav}}
+	        {{with $url := printf "%s/index" $nav}}
+	          <li class="{{if eq $.page.id $url}}active{{end}}"><a href="/{{$nav}}">{{$nav}}</a></li>
+		{{end}}
+	      {{end}}
+	    </ul>
 	  </div>
 	</div>
       </div>
