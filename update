@@ -10,8 +10,8 @@ rm -f -- "$GIT_INDEX_FILE"
 
 jkl .
 
-rm -rf _site/fuse/talks/2013-06-10-la-gophers/
-represent -src=fuse/talks/2013-06-10-la-gophers/ -publish=_site/fuse/talks/2013-06-10-la-gophers/
+rm -rf _site/talks/2013-06-10-la-gophers/
+represent -src=talks/2013-06-10-la-gophers/ -publish=_site/talks/2013-06-10-la-gophers/
 
 # jkl puts this script in _site also, doesn't support any kind of
 # exclude mechanism right now.
