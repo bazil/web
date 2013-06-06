@@ -1,0 +1,208 @@
+Writing a file system in Go
+bazil.org/fuse: a pure-Go FUSE library
+10 Jun 2013
+
+Tommi Virtanen
+tv@eagain.net
+@tv
+
+
+* FUSE
+File systems in User SpacE
+[[http://fuse.sourceforge.net/]]
+
+* People tend to think it's a C library
+
+* It's a Linux kernel API
+With a request-response protocol spoken over a fd
+
+Userspace is the server
+
+* The C library is the reference implementation
+\..named exactly the same as the kernel API :(
+
+All the things you'd expect from a project hosted at SourceForge in 2013.
+
+We'll call it "C FUSE" from here on.
+
+* Others provide similar libraries
+C libraries more or less API compatible with the C FUSE API.
+May even be forks of it.
+Lots of platform-specific extensions.
+
+*OS*X*: [[https://code.google.com/p/macfuse/]]
+or [[https://github.com/macfuse/macfuse]]
+-- dead upstream, forks ahoy
+
+*Windows*: [[http://dokan-dev.net/en/]]
+
+* hanwen/go-fuse
+Han-Wen Nienhuys wrote a `go-fuse` library.
+
+The structure of its API leaves a lot to be desired.
+
+Use it if you want. Good luck.
+
+Personally, I think writing a library from scratch would be less painful.
+
+* rsc to the rescue
+Russ Cox's `fuse` library can be found at `code.google.com/p/rsc/fuse`
+[[https://code.google.com/p/rsc/source/browse/#hg%2Ffuse]]
+
+Bazil is a fork of it. With a name that doesn't match `/fuse/`.
+(Strictly, Bazil is an umbrella project, and `bazil.org/fuse` is the FUSE library.)
+
+Hopefully our contributions help improve the state of the ecosystem.
+
+Russ seems to develop mostly on OS X, Tv is a Linux person.
+Both should work. OS X contributions are most welcome.
+
+* Bazil is an independent implementation
+Pure-Go implementation of userspace server for the Linux and OS X kernel protocols.
+
+Linux kernel support is upstream,
+OS X needs the `fusefs` kernel module from MacFUSE.
+
+On Linux: still uses `fusermount` userspace mount helper from the C FUSE package.
+
+Many things you read about "FUSE" are about C FUSE, and don't apply to Bazil.
+For example: automatic inode numbering, multithreading.
+
+########################################################################
+* Understanding FUSE
+Kernel interface
+[[https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/filesystems/fuse.txt][Documentation/filesystems/fuse.txt]]
+[[https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/fuse.h][include/uapi/linux/fuse.h]]
+numbered message types, wire structures, various constants
+
+C FUSE API docs, "experimental":
+[[http://fuse.sourceforge.net/doxygen/structfuse__lowlevel__ops.html]]
+[[http://fuse.sourceforge.net/doxygen/structfuse__operations.html]]
+
+* Kernel API
+`mount(2)` is given a file descriptor.
+
+Currently bazil uses `/bin/fusermount` as subprocess (to handle
+`/etc/mtab` and such), passes a socketpair fd to it. [[https://github.com/bazillion/fuse/blob/master/mount_linux.go#L15][source]]
+
+From there on, it's just reads and writes on the fd.
+
+* Low-level C FUSE
+C FUSE's _low-level_ API exposes kernel requests and responses quite directly.
+Dispatches in inode numbers, explicit response. Typical to see helper wrappers.
+
+.code hello_ll.c /hello_ll_getattr/,/^}/
+[[http://fuse.git.sourceforge.net/git/gitweb.cgi?p=fuse/fuse;a=blob;f=example/hello_ll.c;h=baf41bc35896fa28fec2d61d99f0a456f7693a54;hb=HEAD#l46][source]]
+
+* Low-level C FUSE, 2
+.code hello_ll.c /hello_stat/,/^}/
+[[http://fuse.git.sourceforge.net/git/gitweb.cgi?p=fuse/fuse;a=blob;f=example/hello_ll.c;h=baf41bc35896fa28fec2d61d99f0a456f7693a54;hb=HEAD#l25][source]]
+
+* High-level C FUSE
+Dispatches on path names instead of inode numbers.
+Response is implicit. Less need for helper wrappers.
+
+.code hello.c /hello_getattr/,/^}/
+[[http://fuse.git.sourceforge.net/git/gitweb.cgi?p=fuse/fuse;a=blob;f=example/hello.c;h=b31fbe5034090640d511b3dc23e3f3f19eb699b8;hb=HEAD#l22][source]]
+
+########################################################################
+* Bazil API
+Bazil doesn't do either inode number or path dispatching.
+
+Instead, it mirrors kernel data structures, with `uint64` handles to objects.
+
+It's also significantly closer to the wire protocol.
+
+Requests are served by methods on the node itself, not a global dispatch function.
+
+Feel free to construct an in-memory tree, for simple filesystems.
+
+* Interfaces
+A `Node` must implement `Attr()`. Everything else is optional.
+
+For example, if a node does not implement `Remove()`, `unlink(2)` on it will always fail.
+
+Documentation of possible interfaces is severely lacking right now.
+Need to explore how to maintain it in sync with the code.
+
+* Directory lookup in Bazil
+Kernel `struct`dentry` maps to `fuse.Node`, identified on wire with `fuse.NodeID`.
+
+`Lookup()` returns a `Node`, a reference is kept in a `map[NodeID]Node` until a `Forget()` call
+
+* Open files in Bazil
+Open file: kernel `struct`file` maps to `fuse.Handle`, identified on wire with `fuse.HandleID`.
+
+`Open()` returns a `Handle` (maybe self), which is kept in a `map[HandleID]Handle` until a `Destroy()` call.
+
+`close(2)` has two parts:
+per `fd` method `Release()` that returns `error` (for delayed writes and such),
+and a final `Destroy()` that always succeeds.
+
+* Let's Go!
+.code hello.go /^type File/,/^}/
+
+* File content
+.code hello.go /^func \(File\) ReadAll\(/,/^}/
+
+`ReadAll()` caches the whole content in memory and serves smaller reads from that.
+
+It's convenient for pseudofiles.
+
+There's also `Read()` for more realistic use.
+
+* Looking up the file by name
+.code hello.go /^type Dir/,/^func \(Dir\) Lookup/+/^}/
+
+* Starting point
+.code hello.go /^type FS/,/^}/
+
+* Listing files
+.code hello.go /^var dirDirs/,/^func \(Dir\) ReadDir\(/+/^}/
+
+* Boilerplate
+.code hello.go //,/^var Usage =/+/^}/
+
+* ...and Go!
+.code hello.go /^func main/,/^\}/
+
+########################################################################
+* Bazil internals
+
+* Special Error type
+Bazil methods return `fuse.Error` and not Go's usual `error`.
+
+It has hidden knowledge of what POSIX `errno` to return to kernel.
+
+Use one of `fuse.EIO`, `fuse.EPERM`, `fuse.ENOENT`, `fuse.ENOSYS`, `fuse.ESTALE`, etc.
+
+Worst case, use `fuse.Errno(syscall.ENOTDIR)` etc. Ideally, Bazil will provide ready errors for all those.
+
+* Inode numbers
+
+If you don't fill in inode numbers in your `Attr()` etc calls, Bazil will hash the full path to create a pseudorandom inode number.
+
+These *may* collide, causing confusion in low-level tools like `find`.
+
+This also currently forces Bazil to remember full pathname to every Node.
+Details are likely to change, if a cheaper replacement scheme can be figured out.
+
+If you care, manage inode numbers explicitly.
+
+* Concurrency
+
+.code bazil-read-loop.go
+
+Each request is served in a separate goroutine.
+
+Sort of like `net/http`.
+
+If you mutate shared data, *use*mutexes*.
+
+########################################################################
+* Bazillion Bytes
+[[http://bazil.org/]]
+
+FUSE can be FUN
+
+Go do it
