@@ -63,7 +63,7 @@ Pure-Go implementation of userspace server for the Linux and OS X kernel protoco
 Linux kernel support is upstream,
 OS X needs the `fusefs` kernel module from MacFUSE.
 
-On Linux: still uses `fusermount` userspace mount helper from the C FUSE package.
+On Linux: uses setuid `fusermount` userspace mount helper from the C FUSE package.
 
 Many things you read about "FUSE" are about C FUSE, and don't apply to Bazil.
 For example: automatic inode numbering, multithreading.
@@ -82,8 +82,9 @@ C FUSE API docs, "experimental":
 * Kernel API
 `mount(2)` is given a file descriptor.
 
-Currently bazil uses `/bin/fusermount` as subprocess (to handle
-`/etc/mtab` and such), passes a socketpair fd to it. [[https://github.com/bazillion/fuse/blob/master/mount_linux.go#L15][source]]
+Bazil uses `/bin/fusermount` as subprocess (to handle `/etc/mtab` and
+such), passes a socketpair fd to it.
+[[https://github.com/bazillion/fuse/blob/master/mount_linux.go#L15][source]]
 
 From there on, it's just reads and writes on the fd.
 
