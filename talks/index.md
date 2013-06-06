@@ -1,5 +1,5 @@
 ---
-title: Talks about Bazil FUSE library
+title: Talks about Bazil
 ---
 
 > ## [Writing a file system in Go](2013-06-10-la-gophers/)
