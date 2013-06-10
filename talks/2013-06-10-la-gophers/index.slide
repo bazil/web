@@ -31,9 +31,11 @@ C libraries more or less API compatible with the C FUSE API.
 May even be forks of it.
 Lots of platform-specific extensions.
 
-*OS*X*: [[https://code.google.com/p/macfuse/]]
-or [[https://github.com/macfuse/macfuse]]
--- dead upstream, forks ahoy
+*OS*X*:
+[[http://osxfuse.github.com/]]
+(originally [[https://code.google.com/p/macfuse/]]
+or [[https://github.com/macfuse/macfuse]])
+-- MacFUSE is dead upstream, forks ahoy
 
 *Windows*: [[http://dokan-dev.net/en/]]
 
@@ -63,7 +65,7 @@ Both should work. OS X contributions are most welcome.
 Pure-Go implementation of userspace server for the Linux and OS X kernel protocols.
 
 Linux kernel support is upstream,
-OS X needs the `fusefs` kernel module from MacFUSE.
+OS X needs the `fusefs` kernel module from OSXFUSE.
 
 On Linux: uses setuid `fusermount` userspace mount helper from the C FUSE package.
 
