@@ -89,6 +89,19 @@ such), passes a socketpair fd to it.
 
 From there on, it's just reads and writes on the fd.
 
+* Kernel protocol
+*RequestID*:
+to match response to request
+lifetime ends with response
+
+*NodeID*:
+directory entry kernels knows about
+kernel tells when to forget
+
+*HandleID*:
+open file
+kernel tells when to destroy
+
 * Low-level C FUSE
 C FUSE's _low-level_ API exposes kernel requests and responses quite directly.
 Dispatches in inode numbers, explicit response. Typical to see helper wrappers.
