@@ -20,7 +20,7 @@ With a request-response protocol spoken over a fd
 Userspace is the server
 
 * The C library is the reference implementation
-\..named exactly the same as the kernel API :(
+\... named exactly the same as the kernel API :(
 
 All the things you'd expect from a project hosted at SourceForge in 2013.
 
@@ -51,7 +51,8 @@ Russ Cox's `fuse` library can be found at `code.google.com/p/rsc/fuse`
 [[https://code.google.com/p/rsc/source/browse/#hg%2Ffuse]]
 
 Bazil is a fork of it. With a name that doesn't match `/fuse/`.
-(Strictly, Bazil is an umbrella project, and `bazil.org/fuse` is the FUSE library.)
+(Strictly, Bazil is an umbrella project, `bazil.org/fuse` is the FUSE library.
+So that was a lie. But call it "Bazil FUSE" if you need to.)
 
 Hopefully our contributions help improve the state of the ecosystem.
 
@@ -192,7 +193,8 @@ It has hidden knowledge of what POSIX `errno` to return to kernel.
 
 Use one of `fuse.EIO`, `fuse.EPERM`, `fuse.ENOENT`, `fuse.ENOSYS`, `fuse.ESTALE`, etc.
 
-Worst case, use `fuse.Errno(syscall.ENOTDIR)` etc. Ideally, Bazil will provide ready errors for all those.
+Worst case, use `fuse.Errno(syscall.ENOTDIR)` etc.
+Ideally, Bazil will provide ready errors for all those.
 
 * Inode numbers
 
