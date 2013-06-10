@@ -12,6 +12,7 @@ File systems in User SpacE
 [[http://fuse.sourceforge.net/]]
 
 * People tend to think it's a C library
+Nope
 
 * It's a Linux kernel API
 With a request-response protocol spoken over a fd
@@ -169,6 +170,7 @@ There's also `Read()` for more realistic use.
 
 ########################################################################
 * Bazil internals
+API decisions in bazil.org/fuse
 
 * Special Error type
 Bazil methods return `fuse.Error` and not Go's usual `error`.
