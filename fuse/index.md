@@ -19,5 +19,5 @@ Github repository: https://github.com/bazillion/fuse
 API docs: http://godoc.org/bazil.org/fuse
 
 Our thanks to [Russ Cox](http://swtch.com/~rsc/) for his [fuse
-library](https://code.google.com/p/rsc/source/browse/#hg%2Ffus), which
+library](https://code.google.com/p/rsc/source/browse/#hg%2Ffuse), which
 this project is based on.
