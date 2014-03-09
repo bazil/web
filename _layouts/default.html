@@ -43,8 +43,10 @@
 	    <li class="{{if eq $.page.id .}}active{{end}}"><a href="/">Home</a></li>
 	  {{end}}
 	  {{range $nav := .site.nav}}
-	    {{with $url := printf "%s/index" $nav}}
-	      <li class="{{if eq $.page.id $url}}active{{end}}"><a href="/{{$nav}}">{{$nav}}</a></li>
+	    {{range $url, $desc := $nav}}
+	      {{with $fullurl := printf "%s/index" $url}}
+	        <li class="{{if eq $.page.id $fullurl}}active{{end}}"><a href="/{{$url}}">{{or $desc $url}}</a></li>
+	      {{end}}
 	    {{end}}
 	  {{end}}
 	</ul>
