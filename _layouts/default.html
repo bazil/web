@@ -35,13 +35,10 @@
 	  <span class="icon-bar"></span>
 	  <span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="#">{{.site.name}}</a>
+	<a class="navbar-brand" href="/">{{.site.name}}</a>
       </div>
       <div class="collapse navbar-collapse" id="site-top-nav">
 	<ul class="nav navbar-nav">
-	  {{with "index"}}
-	    <li class="{{if eq $.page.id .}}active{{end}}"><a href="/">Home</a></li>
-	  {{end}}
 	  {{range $nav := .site.nav}}
 	    {{range $url, $desc := $nav}}
 	      {{with $fullurl := printf "%s/index" $url}}
