@@ -1,5 +1,6 @@
 ---
 title: Bazil source code
+github: https://github.com/bazillion/bazil
 ---
 
 `bazil.org/bazil` is the Go package behind the
