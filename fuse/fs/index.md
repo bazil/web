@@ -1,7 +1,5 @@
 ---
 title: Go FUSE file system library
-go:
-  repo: fuse
 ---
 
 `bazil.org/fuse/fs` contains a higher-level API for creating FUSE

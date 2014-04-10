@@ -1,7 +1,5 @@
 ---
 title: Go FUSE file system library
-go:
-  repo: fuse
 ---
 
 `bazil.org/fuse/fuseutil` contains a utility functions that may be

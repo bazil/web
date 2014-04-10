@@ -1,7 +1,5 @@
 ---
 title: Go FUSE file system library
-go:
-  repo: fuse
 ---
 
 `bazil.org/fuse` is a Go library for writing filesystems. It is a
