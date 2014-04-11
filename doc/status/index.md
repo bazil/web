@@ -34,15 +34,14 @@ Bazil is still missing features, and has intentional limits to keep it
 simple and focused on specific aspects of the design. These limitation
 may be removed later.
 
-### <span id="limits-hardlink"/> No hard links
+See also [anti-goals](/doc/antigoals) which are less likely to be
+"fixed".
 
-For simplicity, Bazil does not support hard links. This may never
-change, as behavior of hard links when synchronizing remote changes
-gets really murky.
+### <span id="limits-inmem"/> Dirty file data is in memory
 
-``` console
-$ ln foo bar    # not supported
-```
+Current implementation does not write file contents to disk until it
+sees `fsync` or `close`. That means creating a large file consumes a
+lot of RAM temporarily.
 
 ### <span id="limits-gc"/> Garbage collection is not implemented yet
 

@@ -12,4 +12,5 @@ toc:
     - install: Installation
     - usage: Usage
     - architecture: Architecture
+    - antigoals: Anti-goals
     - related: Related work
