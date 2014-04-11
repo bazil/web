@@ -1,5 +1,13 @@
 name: "Bazil"
 description: "Filesystem hacking in Go"
 nav:
+  - doc: documentation
   - fuse:
   - talks:
+
+toc:
+  doc:
+    - .: Introduction
+    - status: Status
+    - install: Installation
+    - usage: Usage

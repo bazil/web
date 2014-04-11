@@ -1,0 +1,17 @@
+.bazil-top-container {
+  padding-left: 30px;
+}
+
+.bazil-toc {
+  margin-top: 60px;
+}
+
+a.list-group-item.active,
+a.list-group-item.active:hover,
+a.list-group-item.active:focus {
+  background-image: -webkit-linear-gradient(top, #fafafa 0%, #fafafa 100%);
+  background-image: linear-gradient(to bottom, #fafafa 0%, #fafafa 100%);
+  background-color: #fafafa;
+  color: #808080;
+  border-color: #424242;
+}
