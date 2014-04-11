@@ -26,3 +26,26 @@ the source distribution for more.
 With all that said, we are very enthusiastic about the possible uses
 of Bazil, and think that the architecture can be very resilient
 against data loss.
+
+
+## <span id="limits"/> Limitations
+
+Bazil is still missing features, and has intentional limits to keep it
+simple and focused on specific aspects of the design. These limitation
+may be removed later.
+
+### <span id="limits-hardlink"/> No hard links
+
+For simplicity, Bazil does not support hard links. This may never
+change, as behavior of hard links when synchronizing remote changes
+gets really murky.
+
+``` console
+$ ln foo bar    # not supported
+```
+
+### <span id="limits-gc"/> Garbage collection is not implemented yet
+
+Right now, objects added to the CAS remain there permanently. A plan
+for garbage collection exists (though distributed, weakly connected GC
+is tricky!), but implementing it is not yet a priority.

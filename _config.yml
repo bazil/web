@@ -11,3 +11,5 @@ toc:
     - status: Status
     - install: Installation
     - usage: Usage
+    - architecture: Architecture
+    - related: Related work
