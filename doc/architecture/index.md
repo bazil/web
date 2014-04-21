@@ -4,13 +4,10 @@ title: Architecture
 
 ## <span id="filesystem"/>Filesystem
 
-Bazil is a [FUSE](/doc/related#fuse) file system. It uses the
-[`bazil.org/fuse`](http://bazil.org/fuse/) library to talk to the
-kernel, receiving requests like "open file", and serving them.
-
-This means the files you see when using Bazil do not have to actually
-exist as files on a local file system. This lets you do things like
-browse terabytes of archived data on a laptop with a small SSD.
+Bazil is a [userspace](/doc/related#fuse) file system. This means the
+files you see when using Bazil do not have to actually exist as files
+on a local file system. This lets you do things like browse terabytes
+of archived data on a laptop with a small SSD.
 
 Your local disk will be used as the default storage location and a
 cache.
