@@ -18,6 +18,16 @@ the unique and desirable aspects of Bazil, please do let us know!
 
 Cannot be done while supporting weakly connected operation.
 
+For example, a `rename` of a file on one peer might not be immediately
+visible on another peer. The second peer might even happily write to
+the old file name. At some later time, the changes will be
+synchronized, in this case resulting in an *update/delete conflict* on
+the original file name.
+
+We try to provide useful local operation semantics (for example,
+atomic renames), reasonable distributed semantics and *always* detect
+conflicts where they've occurred.
+
 ## <span id="limits-hardlink"/> Hard links
 
 For simplicity, Bazil does not support hard links. This may never
