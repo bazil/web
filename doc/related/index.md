@@ -20,10 +20,10 @@ and the
 are the best guides because they are the only thing that matters in
 the end.
 
-[`fuse.sourceforge.net`](http://fuse.sourceforge.net/) is the original
-userspace C library. [`bazil.org/fuse`](http://bazil.org/fuse/) is a
-Go implementation of the FUSE userspace protocol. It does not use the
-C library, or derive from it.
+Bazil *does not use* the original C library at
+[`fuse.sourceforge.net`](http://fuse.sourceforge.net/). Instead, we
+have an independent implementation of the protocol, in Go:
+[`bazil.org/fuse`](http://bazil.org/fuse/).
 
 [OSXFUSE](http://osxfuse.github.io/) is the FUSE kernel side ported to
 Apple's OS X.
