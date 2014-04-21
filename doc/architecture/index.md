@@ -50,8 +50,9 @@ secret.
 Trickling every single file content change as Merkle trees of
 directories all the way to the top of the root of the volume would be
 a lot of extra work. Instead, Bazil takes the hybrid approach:
-directories are stored in the CAS only when taking a snapshot; live
-data lives in a [key-value database](/doc/related#bolt).
+directories are stored in the CAS only when taking a
+[snapshot](/doc/architecture#snapshot); live data lives in a
+[key-value database](/doc/related#bolt).
 
 The directory contents are stored as `<dir_inode><basename>` ->
 `<file_metadata>`. This makes `readdir+stat` fast, while always
@@ -59,3 +60,24 @@ serving directories in alphabetical order.
 
 There is currently no support for multiple directory entries pointing
 to the same inode, aka [hard links](/doc/status#limits-hardlink).
+
+## <span id="snapshot"/>Snapshot
+
+Taking a snapshot writes the directory contents from the
+[database](/doc/architecture#directory) to the
+[CAS](/doc/architecture#cas), thereby archiving a snapshot of the
+state of the volume.
+
+Snapshots are created and accessed through the top-level `.snap`
+pseudo-directory. A new snapshot can be taken simply with `mkdir`.
+
+``` console
+$ echo Hello >greeting
+$ mkdir .snap/remember-me
+$ rm Hello
+$ cat .snap/remember-me/greeting
+Hello
+```
+
+The inode space is partitioned so that this and other dynamic content
+gets distinct inode numbers that never collide with allocated inodes.

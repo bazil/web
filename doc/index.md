@@ -22,8 +22,9 @@ wish.
 
 All of the files you store in a Bazil **volume** are
 [deduplicated](/doc/architecture#cas) -- copies of the same file
-contents take up no extra space -- and a **snapshot** can be stored as
-a backup, letting you browse old versions of all the files.
+contents take up no extra space -- and a
+[snapshot](/doc/architecture#snapshot) can be stored as a backup,
+letting you browse old versions of all the files.
 
 Bazil is *not* just a file synchronizer. Each computer stores only
 what it has disk space for, and the rest of the data is fetched over
