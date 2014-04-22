@@ -39,6 +39,23 @@ See also [anti-goals](/doc/antigoals) which are less likely to be
 
 See also [roadmap](/doc/roadmap) for planned features.
 
+### <span id="no-sync"/> No communication between peers yet
+
+At this point in time, Bazil is a single-node system. It'll store your
+data, take snapshots of it, and you could use for example `rsync` to
+backup the object store, but Bazil itself is not yet ready to transfer
+data between computers, or synchronize file changes between two peers.
+
+The design for peer synchronization exists and is pretty solid, and
+current work focuses on a good RPC mechanism; most existing frameworks
+assume small messages, can't prioritize data transfers, or are
+constrained by to strict client-server request-response messaging that
+is not the best match for two-way synchronization traffic.
+
+See [roadmap](/doc/roadmap) for [sync](/doc/roadmap#sync), remote KV
+access via [SFTP](/doc/roadmap#sftp) and [S3](/doc/roadmap#s3),
+[background synchronization](/doc/roadmap#synckv), and so on.
+
 ### <span id="limits-inmem"/> Dirty file data is in memory
 
 Current implementation does not write file contents to disk until it
