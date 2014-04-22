@@ -20,3 +20,17 @@ a.list-group-item.active:focus {
   color: #808080;
   border-color: #424242;
 }
+
+.blog-index-entry h1 {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hdr-date {
+    /* align with tbe bottom of the h1, not the top */
+    margin-top: auto;
+    margin-bottom: 0;
+    /* don't word-wrap around the dashes in a date */
+    white-space: nowrap;
+}
