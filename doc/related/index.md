@@ -47,6 +47,22 @@ Bazil will ([at some point](/doc/status#limits-gc)) perform garbage
 collection, instead of relying on any "640kB should be enough for
 everyone" mentality.
 
+## <span id="tra"/> Tra, a file system synchronizer
+
+[Tra](http://swtch.com/tra/) is a project by Russ Cox that was mostly
+active 2002-2004. You can think of it as a stateful two-way `rsync`,
+with version vectors to quickly decide which subdirectories and files
+need to be synchronized.
+
+Bazil's synchronization logic is inspired by the academic paper
+describing Tra,
+[Optimistic Replication Using Vector Time Pairs](http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf)
+(slides: [1](http://swtch.com/~rsc/talks/group01-tra.pdf),
+[2](http://swtch.com/~rsc/talks/group02-version.pdf)).
+
+In the interests of software archeology, we have a Git mirror of the
+original CVS repository at https://github.com/bazillion/tra
+
 ## <span id="blake2"/> Blake2 hash algorithm
 
 [Blake2](https://blake2.net/) is a fast, cryptographically secure, and
