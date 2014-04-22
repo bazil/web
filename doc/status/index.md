@@ -37,6 +37,8 @@ may be removed later.
 See also [anti-goals](/doc/antigoals) which are less likely to be
 "fixed".
 
+See also [roadmap](/doc/roadmap) for planned features.
+
 ### <span id="limits-inmem"/> Dirty file data is in memory
 
 Current implementation does not write file contents to disk until it
