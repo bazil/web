@@ -14,6 +14,12 @@ If you have an idea of how to gain some of these *without trading off*
 the unique and desirable aspects of Bazil, please do let us know!
 
 
+## <span id="tx"/> Heavy transactional workloads
+
+Don't run your SQL database on top of Bazil. It'll never be the best
+possible fit for that, both because of the userspace indirection and
+because of how Bazil stores its data.
+
 ## <span id="posix"/> Full POSIX compatibility
 
 Cannot be done while supporting weakly connected operation.
