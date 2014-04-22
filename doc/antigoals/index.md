@@ -20,6 +20,13 @@ Don't run your SQL database on top of Bazil. It'll never be the best
 possible fit for that, both because of the userspace indirection and
 because of how Bazil stores its data.
 
+## <span id="app-conflict"/> Application-specific conflict resolution
+
+Writing application and file format specific merging algorithms is an
+endless swamp. Bazil won't prevent you from writing your own, and
+we'll make it as easy as we can, but as a project we won't spend
+effort on it.
+
 ## <span id="posix"/> Full POSIX compatibility
 
 Cannot be done while supporting weakly connected operation.
