@@ -34,3 +34,9 @@ a.list-group-item.active:focus {
     /* don't word-wrap around the dashes in a date */
     white-space: nowrap;
 }
+
+/* bootstrap leaves <hr>'s almost invisible */
+hr.strong {
+  margin: 30px;
+  border-top: 1px solid #ccc;
+}
