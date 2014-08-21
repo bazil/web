@@ -211,7 +211,7 @@ If you care, manage inode numbers explicitly.
 
 * Concurrency
 
-.code bazil-read-loop.go
+.code bazil-read-loop.go /START/,/END/
 
 Each request is served in a separate goroutine.
 
