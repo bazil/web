@@ -59,7 +59,7 @@ The directory contents are stored as `<dir_inode><basename>` ->
 serving directories in alphabetical order.
 
 There is currently no support for multiple directory entries pointing
-to the same inode, aka [hard links](/doc/status#limits-hardlink).
+to the same inode, aka [hard links](/doc/antigoals#limits-hardlink).
 
 ##  Snapshot {#snapshot}
 
