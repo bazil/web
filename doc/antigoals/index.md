@@ -14,20 +14,20 @@ If you have an idea of how to gain some of these *without trading off*
 the unique and desirable aspects of Bazil, please do let us know!
 
 
-## <span id="tx"/> Heavy transactional workloads
+##  Heavy transactional workloads {#tx}
 
 Don't run your SQL database on top of Bazil. It'll never be the best
 possible fit for that, both because of the userspace indirection and
 because of how Bazil stores its data.
 
-## <span id="app-conflict"/> Application-specific conflict resolution
+##  Application-specific conflict resolution {#app-conflict}
 
 Writing application and file format specific merging algorithms is an
 endless swamp. Bazil won't prevent you from writing your own, and
 we'll make it as easy as we can, but as a project we won't spend
 effort on it.
 
-## <span id="posix"/> Full POSIX compatibility
+##  Full POSIX compatibility {#posix}
 
 Cannot be done while supporting weakly connected operation.
 
@@ -41,7 +41,7 @@ We try to provide useful local operation semantics (for example,
 atomic renames), reasonable distributed semantics and *always* detect
 conflicts where they've occurred.
 
-## <span id="limits-hardlink"/> Hard links
+##  Hard links {#limits-hardlink}
 
 For simplicity, Bazil does not support hard links. This may never
 change, as behavior of hard links when synchronizing remote changes
@@ -51,7 +51,7 @@ gets really murky.
 $ ln foo bar    # not supported
 ```
 
-## <span id="mknod"/> `mknod` support
+##  `mknod` support {#mknod}
 
 Bazil is a userspace filesystem, and what would these things even mean
 in a distributed context?
@@ -60,7 +60,7 @@ in a distributed context?
 $ mknod foo b 12 34    # not supported
 ```
 
-## <span id="sync-write"/> Immediate write visibility to other peers
+##  Immediate write visibility to other peers {#sync-write}
 
 We follow something closer to the AFS "commit-on-close". File state
 becomes visible to peers only on `fsync` or `close`.
@@ -69,7 +69,7 @@ Current implementation even
 [holds dirty file content fully in memory](/doc/status#limits-inmem).
 
 
-## <span id="global-inodes"/> Global inode numbers across peers
+##  Global inode numbers across peers {#global-inodes}
 
 The synchronization operates on filenames, not on inodes. Inodes are
 local to one peer.

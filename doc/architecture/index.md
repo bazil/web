@@ -2,7 +2,7 @@
 title: Architecture
 ---
 
-## <span id="filesystem"/>Filesystem
+##  Filesystem {#filesystem}
 
 Bazil is a [userspace](/doc/related#fuse) file system. This means the
 files you see when using Bazil do not have to actually exist as files
@@ -12,7 +12,7 @@ of archived data on a laptop with a small SSD.
 Your local disk will be used as the default storage location and a
 cache.
 
-## <span id="cas"/>Content-Addressed Storage
+##  Content-Addressed Storage {#cas}
 
 Each file stored in Bazil is divided into chunks,
 [hashed](/doc/related#blake2) in a
@@ -30,7 +30,7 @@ The Merkle tree also ensures data integrity. Knowing the hash at the
 root of the tree means none of the content below can have changed,
 maliciously or by bitrot.
 
-## <span id="crypto"/>Convergent encryption
+##  Convergent encryption {#crypto}
 
 [Convergent encryption](https://en.wikipedia.org/wiki/Convergent_encryption)
 means data is encrypted with a secret key derived from the data
@@ -45,7 +45,7 @@ The encrypted data is identified by a new key, which is again a
 personalized Blake2 hash of the old key, keyed by the configured
 secret.
 
-## <span id="directory"/>Directory storage
+##  Directory storage {#directory}
 
 Trickling every single file content change as Merkle trees of
 directories all the way to the top of the root of the volume would be
@@ -61,7 +61,7 @@ serving directories in alphabetical order.
 There is currently no support for multiple directory entries pointing
 to the same inode, aka [hard links](/doc/status#limits-hardlink).
 
-## <span id="snapshot"/>Snapshot
+##  Snapshot {#snapshot}
 
 Taking a snapshot writes the directory contents from the
 [database](/doc/architecture#directory) to the

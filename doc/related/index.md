@@ -5,7 +5,7 @@ title: Related work
 Bazil stands on the shoulders of some giants, and was inspired by
 shoulders of other giants. Or something like that.
 
-## <span id="fuse"/> FUSE
+## FUSE {#fuse}
 
 [FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) is a
 protocol between the kernel and a userspace process, letting the
@@ -29,7 +29,7 @@ have an independent implementation of the protocol, in Go:
 Apple's OS X.
 
 
-## <span id="venti"/> Plan 9's Venti
+##  Plan 9's Venti {#venti}
 
 Bazil's use of a [CAS](#cas) is similar to how
 [Plan 9](http://doc.cat-v.org/plan_9/)'s
@@ -47,7 +47,7 @@ Bazil will ([at some point](/doc/status#limits-gc)) perform garbage
 collection, instead of relying on any "640kB should be enough for
 everyone" mentality.
 
-## <span id="tra"/> Tra, a file system synchronizer
+##  Tra, a file system synchronizer {#tra}
 
 [Tra](http://swtch.com/tra/) is a project by Russ Cox that was mostly
 active 2002-2004. You can think of it as a stateful two-way `rsync`,
@@ -63,7 +63,7 @@ describing Tra,
 In the interests of software archeology, we have a Git mirror of the
 original CVS repository at https://github.com/bazillion/tra
 
-## <span id="blake2"/> Blake2 hash algorithm
+##  Blake2 hash algorithm {#blake2}
 
 [Blake2](https://blake2.net/) is a fast, cryptographically secure, and
 flexible hash. It can be personalized, keyed, and has no fixed output
@@ -86,14 +86,14 @@ performance difference (there doesn't seem to be).
 
 And after all this, Blake2 is *fast*.
 
-## <span id="nacl"/>NaCl
+##  NaCl {#nacl}
 
 [NaCl](http://nacl.cr.yp.to/) is a delightfully simple & fast crypto
 library. Bazil uses the
 [Go reimplementation](http://godoc.org/code.google.com/p/go.crypto/nacl)
 of it.
 
-## <span id="bolt"/>Bolt
+##  Bolt {#bolt}
 
 [Bolt](https://github.com/boltdb/bolt) is a key/value store, with an
 emphasis at very fast reads. Its API is a pleasure to use.

@@ -28,7 +28,7 @@ of Bazil, and think that the architecture can be very resilient
 against data loss.
 
 
-## <span id="limits"/> Limitations
+##  Limitations {#limits}
 
 Bazil is still missing features, and has intentional limits to keep it
 simple and focused on specific aspects of the design. These limitation
@@ -39,7 +39,7 @@ See also [anti-goals](/doc/antigoals) which are less likely to be
 
 See also [roadmap](/doc/roadmap) for planned features.
 
-### <span id="no-sync"/> No communication between peers yet
+###  No communication between peers yet {#no-sync}
 
 At this point in time, Bazil is a single-node system. It'll store your
 data, take snapshots of it, and you could use for example `rsync` to
@@ -56,13 +56,13 @@ See [roadmap](/doc/roadmap) for [sync](/doc/roadmap#sync), remote KV
 access via [SFTP](/doc/roadmap#sftp) and [S3](/doc/roadmap#s3),
 [background synchronization](/doc/roadmap#synckv), and so on.
 
-### <span id="limits-inmem"/> Dirty file data is in memory
+###  Dirty file data is in memory {#limits-inmem}
 
 Current implementation does not write file contents to disk until it
 sees `fsync` or `close`. That means creating a large file consumes a
 lot of RAM temporarily.
 
-### <span id="limits-gc"/> Garbage collection is not implemented yet
+###  Garbage collection is not implemented yet {#limits-gc}
 
 Right now, objects added to the CAS remain there permanently. A plan
 for garbage collection exists (though distributed, weakly connected GC
