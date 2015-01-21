@@ -96,4 +96,4 @@ of it.
 ## <span id="bolt"/>Bolt
 
 [Bolt](https://github.com/boltdb/bolt) is a key/value store, with an
-emphasis at very fast reads. It's API is a pleasure to use.
+emphasis at very fast reads. Its API is a pleasure to use.
