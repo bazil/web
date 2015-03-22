@@ -5,8 +5,10 @@ github: https://github.com/bazillion/bazil
 
 ## Installing from source
 
+Building Bazil generally requires the latest `1.x` release of Go.
+
 If you want to install from source, first
-[install Go](http://golang.org/doc/install) (v1.2 or newer), then
+[install Go](http://golang.org/doc/install), then
 [set up GOPATH](http://golang.org/doc/code.html) and then run
 
 ``` console
