@@ -1,6 +1,6 @@
 ---
 title: Installation
-github: https://github.com/bazillion/bazil
+github: https://github.com/bazil/bazil
 ---
 
 ## Installing from source

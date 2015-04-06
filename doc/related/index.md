@@ -61,7 +61,7 @@ describing Tra,
 [2](http://swtch.com/~rsc/talks/group02-version.pdf)).
 
 In the interests of software archeology, we have a Git mirror of the
-original CVS repository at https://github.com/bazillion/tra
+original CVS repository at https://github.com/bazil/tra
 
 ##  Blake2 hash algorithm {#blake2}
 

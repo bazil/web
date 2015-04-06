@@ -42,4 +42,4 @@ COMMIT="$(git commit-tree "$TREE" <<EOF
 Regenerated site.
 EOF
 )"
-git push https://github.com/bazillion/bazillion.github.io +"$COMMIT":refs/heads/master
+git push https://github.com/bazil/bazil.github.io +"$COMMIT":refs/heads/master

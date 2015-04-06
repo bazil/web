@@ -1,6 +1,6 @@
 ---
 title: Bazil source code
-github: https://github.com/bazillion/bazil
+github: https://github.com/bazil/bazil
 ---
 
 `bazil.org/bazil` is the Go package behind the
@@ -15,6 +15,6 @@ Here's how to get going:
 go get bazil.org/bazil
 ```
 
-Github repository: https://github.com/bazillion/bazil
+Github repository: https://github.com/bazil/bazil
 
 API docs: http://godoc.org/bazil.org/bazil

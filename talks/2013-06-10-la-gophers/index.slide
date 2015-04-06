@@ -88,7 +88,7 @@ C FUSE API docs, "experimental":
 
 Bazil uses `/bin/fusermount` as subprocess (to handle `/etc/mtab` and
 such), passes a socketpair fd to it.
-[[https://github.com/bazillion/fuse/blob/master/mount_linux.go#L15][source]]
+[[https://github.com/bazil/fuse/blob/master/mount_linux.go#L15][source]]
 
 From there on, it's just reads and writes on the fd.
 
