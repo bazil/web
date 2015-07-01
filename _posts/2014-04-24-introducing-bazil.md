@@ -89,10 +89,10 @@ Now you have several copies of the same files, and *no idea* what was
 modified when, or whether you're looking at the last copy, or whether
 it's *safe to delete* to free up space on the cramped laptop.
 
-A network file system will also for you to stay within wifi range. For
-travel, you're once again reduced to up *manually copying files
-around*, and once again lose track of where's the *latest copy* of
-what file.
+A network file system will also require for you to stay within wifi
+range. For travel, you're once again reduced to up *manually copying
+files around*, and once again lose track of where's the *latest copy*
+of what file.
 
   - <i class="fa fa-desktop"></i> <i class="fa fa-meh-o
     text-danger"></i> Desktop use is kinda sorta tolerable: you're never
