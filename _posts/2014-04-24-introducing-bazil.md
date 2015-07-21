@@ -200,4 +200,3 @@ or Twitter [@BazilFS](https://twitter.com/BazilFS).
 
 <p style="font-size: 80%">
 The original gopher image was made by [Renee French](http://blog.golang.org/gopher).
-The disk drum image is [public domain](http://www.openclipart.org/detail/database-symbol-by-rg1024).
