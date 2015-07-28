@@ -105,6 +105,11 @@ white$ bazil server run &
 bazil: Listening on [::]:34211
 ```
 
+```console
+black$ bazil server run &
+bazil: Listening on [::]:nnnnn
+```
+
 ## Making friends
 
 We believe in the value of encryption. Bazil uses
