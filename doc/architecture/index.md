@@ -74,7 +74,7 @@ pseudo-directory. A new snapshot can be taken simply with `mkdir`.
 ``` console
 $ echo Hello >greeting
 $ mkdir .snap/remember-me
-$ rm Hello
+$ rm greeting
 $ cat .snap/remember-me/greeting
 Hello
 ```
