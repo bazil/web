@@ -30,9 +30,7 @@ need a custom branch of it for now. Let's check that out:
 ```console
 $ go get google.golang.org/grpc
 $ cd $GOPATH/src/google.golang.org/grpc
-$ git remote add bazil https://github.com/bazil/grpc-go
-$ git fetch bazil
-$ git checkout -b auth bazil/auth
+$ git checkout 5e5f5df2bbfed81a191eb0484831738cc729f3b9
 ```
 
 And then install Bazil itself:
