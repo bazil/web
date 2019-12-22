@@ -6,9 +6,10 @@ menu:
     weight: 1
 ---
 
-> *Each of the concepts below links to more background.*
->
-> *Click them to learn more, or keep reading.*
+{{<lead>}}
+*Each of the concepts below links to more background. <br>
+Click them to learn more, or keep reading.*
+{{</lead>}}
 
 Bazil is a [file system](/doc/architecture#filesystem), a special
 folder on all of your computers where the same contents are available

@@ -1,5 +1,6 @@
 .bazil-top-container {
   padding-left: 30px;
+  margin-top: 36px;
   margin-bottom: 60px;
 }
 
@@ -39,4 +40,62 @@ a.list-group-item.active:focus {
 hr.strong {
   margin: 30px;
   border-top: 1px solid #ccc;
+}
+
+pre code {
+    display: block;
+    padding: 9.5px;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+body {
+    color: #333333;
+}
+
+a {
+    color: #428bca;
+}
+
+code {
+    color: #c7254e;
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+.navbar-dark .navbar-brand {
+    color: #aaa;
+    /* align logo left dot nicely near bottom of text */
+    line-height: 1.25rem;
+}
+
+.emphasize-border-left {
+    padding: 10px 20px;
+    border-left: 5px solid #eee;
+}
+
+
+body {
+    /* bootstrap doesn't give a crap about good linux defaults
+       https://getbootstrap.com/docs/4.4/content/reboot/#native-font-stack
+   */
+    font-family:
+	/* what looks good on Linux, IMHO */
+	"Liberation Sans",
+	/* Safari for macOS and iOS (San Francisco) */
+	-apple-system,
+	/* Chrome < 56 for macOS (San Francisco) */
+	BlinkMacSystemFont,
+	/* Windows */
+	"Segoe UI",
+	/* Android */
+	"Roboto",
+	/* Basic web fallback */
+	"Helvetica Neue", Arial, sans-serif,
+	/* Emoji fonts */
+	"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }

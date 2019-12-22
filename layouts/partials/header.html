@@ -1,19 +1,10 @@
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <div class="navbar-header">
-	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-top-nav">
-	    <span class="sr-only">Toggle navigation</span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	  </button>
-	  <a class="navbar-brand" href="/">{{.Site.Title}}<img src="/img/logo-white.svg" style="height: 24px; margin-left: 10px; vertical-align: top;"/></a>
-  </div>
-  <div class="collapse navbar-collapse" id="site-top-nav">
-	  <ul class="nav navbar-nav">
-      {{$currentPage := .}}
-	    {{range .Site.Menus.nav}}
-	    <li class="{{if or ($currentPage.IsMenuCurrent "nav" .) ($currentPage.HasMenuCurrent "nav" .)}}active{{end}}"><a href="{{.URL}}">{{.Name}}</a></li>
-	    {{end}}
-	  </ul>
+<nav class="navbar navbar-expand navbar-dark bg-black" role="navigation">
+	<a class="navbar-brand" href="/">{{.Site.Title}}<img src="/img/logo-white.svg" style="height: 24px; margin-left: 10px; vertical-align: top;"/></a>
+  <ul class="navbar-nav mr-auto">
+    {{$currentPage := .}}
+	  {{range .Site.Menus.nav}}
+	  <li class="nav-item {{if or ($currentPage.IsMenuCurrent "nav" .) ($currentPage.HasMenuCurrent "nav" .)}}active{{end}}"><a class="nav-link" href="{{.URL}}">{{.Name}}</a></li>
+	  {{end}}
+  </ul>
   </div>
 </nav>

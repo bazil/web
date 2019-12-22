@@ -7,7 +7,7 @@
   </head>
   <body>
     {{- partial "header.html" . -}}
-    <div class="container-fluid bazil-top-container">
+    <div class="container-xl bazil-top-container">
       <div class="row">
 	      <div class="col-md-2">
 	        {{$subtree := index (split $.RelPermalink "/") 1}}
@@ -15,7 +15,7 @@
 	        {{with $menu := index .Site.Menus $subtree}}
 	        <div class="list-group bazil-toc">
 	          {{range $menu}}
-		        <a class="list-group-item {{if or ($currentPage.IsMenuCurrent $subtree .) ($currentPage.HasMenuCurrent $subtree .)}}active{{end}}" href="{{.URL}}">{{.Name}}</a>
+		        <a class="list-group-item list-group-item-action {{if or ($currentPage.IsMenuCurrent $subtree .) ($currentPage.HasMenuCurrent $subtree .)}}active{{end}}" href="{{.URL}}">{{.Name}}</a>
 	          {{end}}
 	        </div>
 	        {{end}}
