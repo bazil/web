@@ -1,0 +1,17 @@
+{{define "main"}}
+<h1>{{.Title | markdownify}}</h1>
+{{.Content}}
+{{range .Data.Terms.Alphabetical}}
+<h2 id="#tag-{{.Name}}">
+  <a href="{{.Page.Permalink}}">{{.Page.Title | markdownify}}</a>
+  {{.Count}}
+</h2>
+{{with .Pages}}
+<ul>
+  {{range .}}
+  <li><a href="{{.Permalink}}">{{.Title | markdownify}}</a></li>
+  {{end}}
+</ul>
+{{end}}
+{{end}}
+{{end}}

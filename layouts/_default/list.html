@@ -1,0 +1,31 @@
+{{define "main"}}
+<h1>{{.Title | markdownify}}</h1>
+{{with .Content}}
+{{.}}
+{{else}}
+{{range .Pages.ByPublishDate.Reverse}}
+<div class="row blog-index-entry">
+  <section class="col-md-12">
+    <h1>
+	    <a href="{{.RelPermalink}}" class="stealthlink">{{.Title | markdownify}}</a>
+	    <small class="hdr-date">{{.PublishDate.Format "2006-01-02"}}</small>
+    </h1>
+    <p>
+	    {{.Content}}
+    </p>
+    <p>
+	    posted on
+	    <a href="{{.RelPermalink}}">{{.PublishDate.Format "2006-01-02"}}</a>,
+	    tagged as
+      {{range $tag := .Params.tags}}
+      {{with $.Site.GetPage (printf "/tags/%s" ($tag | urlize))}}
+      <a href="{{.Permalink}}">{{$tag}}</a>
+      {{end}}
+	    {{end}}
+    </p>
+    <hr class="strong"/>
+  </section>
+</div>
+{{end}}
+{{end}}
+{{end}}

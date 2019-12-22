@@ -5,23 +5,23 @@ set -e
 cd_to_toplevel
 
 export GIT_INDEX_FILE="$GIT_DIR/index.github-pages"
-
 rm -f -- "$GIT_INDEX_FILE"
 
-jkl .
+# hugo does not clean up old clutter
+rm -rf public
 
-find talks/ -mindepth 1 -maxdepth 1 -type d \
-| while read p; do
-    rm -rf -- _site/"$p"
-    represent -src="$p" -publish=_site/"$p"
+hugo 1>&2
+
+find content/talks/ -mindepth 2 -maxdepth 2 -name '*.slide' -type f -printf '%h\n' \
+    | uniq \
+    | while read p; do
+    rm -rf temp/represent
+    mkdir -p temp/represent
+    cp -r "$p"/* temp/represent
+    rm -f temp/represent/*.html temp/represent/*.md
+    represent -src="temp/represent" -publish="$p"
+    rm -rf temp/represent
 done
-
-# jkl puts this script in _site also, doesn't support any kind of
-# exclude mechanism right now.
-rm -f _site/update
-
-# static content, please don't run jekyll
-touch _site/.nojekyll
 
 if git diff-index --quiet HEAD; then
     echo "$(basename "$0"): dirty, not publishing" 1>&2
@@ -33,10 +33,10 @@ if [ "$(git symbolic-ref HEAD)" != "refs/heads/master" ]; then
     exit 0
 fi
 
-find _site/ -type f -print0 \
+find public/ -type f -print0 \
 | git update-index --add --replace -z --stdin
 
-TREE="$(git write-tree --prefix=_site/)"
+TREE="$(git write-tree --prefix=public/)"
 
 COMMIT="$(git commit-tree "$TREE" <<EOF
 Regenerated site.

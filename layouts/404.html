@@ -1,0 +1,15 @@
+{{define "main"}}
+<!--
+     https://discourse.gohugo.io/t/define-404-page-content-in-an-md-file-under-the-content-directory/13943/22
+-->
+{{with site.GetPage "/404"}}
+<main id="main">
+  <div>
+    <h1 id="title">{{.Title | markdownify}}</h1>
+  </div>
+  <div>
+    {{.Content}}
+  </div>
+</main>
+{{end}}
+{{end}}

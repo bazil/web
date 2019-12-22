@@ -1,0 +1,9 @@
+{{define "main"}}
+<h1><a href="../#tag-{{.Data.Term}}" class="stealthlink">{{.Title | markdownify}}</a></h1>
+{{.Content}}
+<ul>
+  {{range .Data.Pages}}
+  <li><a href="{{.Permalink}}">{{.Title | markdownify}}</a></li>
+  {{end}}
+</ul>
+{{end}}

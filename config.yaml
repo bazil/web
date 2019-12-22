@@ -1,0 +1,31 @@
+baseURL: https://bazil.org/
+title: "Bazil"
+params:
+  description: "Filesystem hacking in Go"
+menu:
+  nav:
+    - identifier: doc
+      name: documentation
+      url: /doc/
+      weight: 1
+    - identifier: fuse
+      name: fuse
+      url: /fuse/
+      weight: 2
+    - identifier: talks
+      name: talks
+      url: /talks/
+      weight: 3
+disableHugoGeneratorInject: true
+permalinks:
+  blog: /:year/:month/:day/:slug
+frontmatter:
+  date: ["date", ":filename", ":default"]
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# disable categories by overriding the taxonomies used
+taxonomies:
+  tag: tags
