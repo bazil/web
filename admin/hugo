@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+. "$(git --exec-path)/git-sh-setup"
+cd_to_toplevel
+
+( cd admin/tools/hugo && go build github.com/gohugoio/hugo )
+exec ./admin/tools/hugo/hugo "$@"

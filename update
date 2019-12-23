@@ -10,7 +10,7 @@ rm -f -- "$GIT_INDEX_FILE"
 # hugo does not clean up old clutter
 rm -rf public
 
-hugo 1>&2
+./admin/hugo 1>&2
 
 find content/talks/ -mindepth 2 -maxdepth 2 -name '*.slide' -type f -printf '%h\n' \
     | uniq \
@@ -19,7 +19,7 @@ find content/talks/ -mindepth 2 -maxdepth 2 -name '*.slide' -type f -printf '%h\
     mkdir -p temp/represent
     cp -r "$p"/* temp/represent
     rm -f temp/represent/*.html temp/represent/*.md
-    represent -src="temp/represent" -publish="$p"
+    ./admin/represent -src="temp/represent" -publish="$p"
     rm -rf temp/represent
 done
 

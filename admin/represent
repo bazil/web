@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+. "$(git --exec-path)/git-sh-setup"
+cd_to_toplevel
+
+( cd admin/tools/represent && go build github.com/cmars/represent )
+exec ./admin/tools/represent/represent "$@"
