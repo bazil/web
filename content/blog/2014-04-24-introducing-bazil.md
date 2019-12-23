@@ -24,12 +24,12 @@ coming.
 
 Imagine you have
 
-  - <i class="fa fa-laptop"></i> A laptop with a a 256GB SSD
-  - <i class="fa fa-desktop"></i> A desktop with a 3TB hard disk
-  - <i class="fa fa-cloud"></i> A cloud server or storage service
+  - {{<fontawesome "solid/laptop">}} A laptop with a a 256GB SSD
+  - {{<fontawesome "solid/desktop">}} A desktop with a 3TB hard disk
+  - {{<fontawesome "solid/cloud">}} A cloud server or storage service
     <br/>(virtual machine with expandable disks, S3, etc)
-  - **or** <i class="fa fa-linux"></i> just a cheap computer in a closet with two slow 4TB disks
-  - **or** <i class="fa fa-hdd-o"></i> external USB disk you plug in once a week for backups
+  - **or** {{<fontawesome "brands/linux">}} just a cheap computer in a closet with two slow 4TB disks
+  - **or** {{<fontawesome "regular/hdd">}} external USB disk you plug in once a week for backups
 
 On the desktop, you naturally want to be able to use the whole 3TB
 disk. And you're not always using the desktop, even when you're home
@@ -47,24 +47,24 @@ that much*! You're forced to play games with *picking-and-choosing*
 what folders get synchronized, and just don't have the *convenience*
 of grabbing that 8-year-old wedding photo on a whim.
 
-  - <i class="fa fa-desktop"></i> <i class="fa fa-check text-success"></i>
-    Desktop use is just ok: you need to keep adjusting what folders are
-    synced and what not
-  - <i class="fa fa-laptop"></i> <i class="fa fa-frown-o text-danger"></i>
+  - {{<fontawesome "solid/desktop">}} {{<fontawesome
+	icon="solid/check" class="text-success">}} Desktop use is just ok:
+	you need to keep adjusting what folders are synced and what not
+  - {{<fontawesome "solid/laptop">}} {{<fontawesome icon="regular/frown" class="text-danger">}}
     Laptop use is miserable
-  - <i class="fa fa-cloud"></i> <i class="fa fa-meh-o text-danger"></i>
+  - {{<fontawesome "solid/cloud">}} {{<fontawesome icon="regular/meh" class="text-warning">}}
     Cloud storage of 3TB gets expensive: Dropbox or AWS will charge you
     $1000/year for the storage alone. That's about 30TB of hard drives.
     <br/>And most providers don't inspire confidence on the privacy of your
     files.
-  - **or** <i class="fa fa-linux"></i> <i class="fa fa-frown-o
-    text-danger"></i> The large corporations are not interested in
-    supporting your server in a closet.
-  - **or** <i class="fa fa-hdd-o"></i> <i class="fa fa-frown-o
-    text-danger"></i> These are the wrong corporations to make money off
-    of you buying hard drives, so they have no interest in supporting
-    that either. Why don't you rent more online space, you're easier
-    to monetize that way.
+  - **or** {{<fontawesome "brands/linux">}} {{<fontawesome
+    icon="regular/frown" class="text-danger">}} The large corporations
+    are not interested in supporting your server in a closet.
+  - **or** {{<fontawesome "regular/hdd">}} {{<fontawesome
+    icon="regular/frown" class="text-danger">}} These are the wrong
+    corporations to make money off of you buying hard drives, so they
+    have no interest in supporting that either. Why don't you rent
+    more online space, you're easier to monetize that way.
 
 To modernize an aphorism, you can't put ten terabytes of files on a
 500 GB SSD. Syncing between very disproportionate systems is
@@ -98,21 +98,23 @@ range. For travel, you're once again reduced to up *manually copying
 files around*, and once again lose track of where's the *latest copy*
 of what file.
 
-  - <i class="fa fa-desktop"></i> <i class="fa fa-meh-o
-    text-danger"></i> Desktop use is kinda sorta tolerable: you're never
-    sure whether the file you are looking at is the latest copy
+  - {{<fontawesome "solid/desktop">}} {{<fontawesome
+    icon="regular/meh" class="text-warning">}} Desktop use is kinda
+    sorta tolerable: you're never sure whether the file you are
+    looking at is the latest copy
 
-  - <i class="fa fa-laptop"></i> <i class="fa fa-frown-o
-    text-danger"></i> Laptop use is miserable: you're confused about
-    which copies of your files are the right ones, the network file
-    system is an umbilical tying you to your home network, and
-    everything goes over the slow wifi all the time
+  - {{<fontawesome "solid/laptop">}} {{<fontawesome
+    icon="regular/frown" class="text-danger">}} Laptop use is
+    miserable: you're confused about which copies of your files are
+    the right ones, the network file system is an umbilical tying you
+    to your home network, and everything goes over the slow wifi all
+    the time
 
-  - <i class="fa fa-cloud"></i> <i class="fa fa-meh-o text-danger"></i>
-    Cloud storage is still expensive, but now you can use it as backup
-    only and bypass the synchronization service providers: switching
-    between clouds is easier, and cold storage and reduced
-    availability is cheaper.
+  - {{<fontawesome "solid/cloud">}} {{<fontawesome icon="regular/meh"
+    class="text-warning">}} Cloud storage is still expensive, but now
+    you can use it as backup only and bypass the synchronization
+    service providers: switching between clouds is easier, and cold
+    storage and reduced availability is cheaper.
 
     However, this leaves you installing & configuring cloud backup
     software *in addition to* your network file system woes; not the
@@ -120,14 +122,14 @@ of what file.
     browsing / recovery integration for you network file system
     clients.
 
-  - **or** <i class="fa fa-linux"></i> <i class="fa fa-meh-o
-    text-danger"></i> You can choose to back up to your own disks --
-	with the same caveats as above
+  - **or** {{<fontawesome "brands/linux">}} {{<fontawesome
+	icon="regular/meh" class="text-warning">}} You can choose to back
+	up to your own disks -- with the same caveats as above
 
-  - **or** <i class="fa fa-hdd-o"></i> <i class="fa fa-frown-o
-    text-danger"></i> All of the bad parts of the computer in the
-    closet, with the extra of needing to fiddle with the disks
-	and remember things.
+  - **or** {{<fontawesome "regular/hdd">}} {{<fontawesome
+    icon="regular/frown" class="text-warning">}} All of the bad parts
+    of the computer in the closet, with the extra of needing to fiddle
+    with the disks and remember things.
 
 
 ## What Bazil does
@@ -175,20 +177,20 @@ All Bazil file storage can be [encrypted](/doc/architecture#crypto) to
 guarantee your privacy, whether in the cloud, on your own computers,
 or on external hard drives. Encryption is *on by default*.
 
-  - <i class="fa fa-desktop"></i> <i class="fa fa-check
-    text-success"></i> Desktop use is good: changes are synced at the
+  - {{<fontawesome "solid/desktop">}} {{<fontawesome icon="solid/check" class="text-success">}} Desktop use is good: changes are synced at the
     first opportunity
-  - <i class="fa fa-laptop"></i> <i class="fa fa-check
-    text-success"></i> Laptop use is good: all the data is accessible,
+  - {{<fontawesome "solid/laptop">}} {{<fontawesome icon="solid/check" class="text-success">}} Laptop use is good: all the data is accessible,
     often used files are cached, changes are synchronized, files can
     be made available offline
-  - <i class="fa fa-cloud"></i> **and** <i class="fa fa-linux"></i> <i
-    class="fa fa-check text-success"></i> You can mix-and-match cloud
-    storage providers and servers in closet as you please
-  - **and** <i class="fa fa-hdd-o"></i> <i class="fa fa-check
-    text-success"></i> you can use external disks for extra space, with
-    Bazil keeping track of what data is what on disk, even when they
-    are unplugged, or even use them to avoid slow Internet transfers
+  - {{<fontawesome "solid/cloud">}} **and** {{<fontawesome
+	"brands/linux">}} {{<fontawesome icon="solid/check"
+	class="text-success">}} You can mix-and-match cloud storage
+	providers and servers in closet as you please
+  - **and** {{<fontawesome "regular/hdd">}} {{<fontawesome
+	icon="solid/check" class="text-success">}} you can use external
+	disks for extra space, with Bazil keeping track of what data is
+	what on disk, even when they are unplugged, or even use them to
+	avoid slow Internet transfers
 
 
 ## Current status

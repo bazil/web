@@ -1,0 +1,1 @@
+<div class="svg-icon svg-baseline {{.Get "class"}}">{{readFile (printf "layouts/shortcodes/fontawesome/%s.svg" (or (.Get 0) (.Get "icon"))) | safeHTML}}</div>
