@@ -4,5 +4,5 @@ go 1.13
 
 require (
 	github.com/gobuffalo/envy v1.8.1 // indirect
-	github.com/gohugoio/hugo v0.62.0
+	github.com/gohugoio/hugo v0.79.1
 )
